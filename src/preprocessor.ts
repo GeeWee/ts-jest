@@ -42,14 +42,12 @@ export function process(src, path, config, transformOptions: any = {}) {
         );
 
         const outputText =
-            compilerOptions.allowSyntheticDefaultImports && !tsJestConfig.skipBabel
-                ? babelJest.process(
+                 babelJest.process(
                     tsTranspiled.outputText,
-                    path + '.js', // babel-jest only likes .js files ¯\_(ツ)_/¯
+                    path, // babel-jest only likes .js files ¯\_(ツ)_/¯
                     config,
                     transformOptions
-                )
-                : tsTranspiled.outputText;
+                );
 
         // strip root part from path
         // this results in a shorter filename which will also make the encoded base64 filename for the cache shorter
